@@ -2755,10 +2755,14 @@ LOW PRIORITY (rotate in/out):
   </script>
 
   <script>
-    fetch('https://api.countapi.xyz/hit/rvntestingacademy/visits')
+    fetch('https://api.countapi.xyz/hit/rvntestingacademy.com/visits')
       .then(response => response.json())
       .then(data => {
         document.getElementById('visitor-count').innerText = data.value;
+      })
+      .catch(error => {
+        document.getElementById('visitor-count').innerText = "0";
+        console.log(error);
       });
   </script>
 
