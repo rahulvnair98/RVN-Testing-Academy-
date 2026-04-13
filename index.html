@@ -1316,51 +1316,30 @@
       <button class="nav-link" onclick="showPage('roadmap')">Roadmap</button>
       <button class="nav-link" onclick="showPage('glossary')">Glossary</button>
     </div>
-    <div style="display:flex;gap:10px;align-items:center;">
-
-      <div style="
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px 18px;
-    background:rgba(127,119,221,0.08);
-    border:1px solid rgba(127,119,221,0.18);
-    border-radius:16px;
-    backdrop-filter:blur(10px);
-    box-shadow:0 0 18px rgba(127,119,221,0.08);
-  ">
-
-        <span style="
-      color:#a78bfa;
-      font-weight:600;
-      font-size:13px;
-      letter-spacing:0.5px;
-      white-space:nowrap;
-    ">
-          👁 Visitors
-        </span>
-
-        <div style="
-      transform:scale(0.82);
-      transform-origin:left center;
+    <div style="
       display:flex;
       align-items:center;
-      filter:brightness(0.9) contrast(1.05);
-      margin-right:-12px;
-    ">
-          <script type='text/javascript'
-            src='https://www.freevisitorcounters.com/auth.php?id=9871fbe610573651696f44705ff5efeaa1594e1d'></script>
+      gap:10px;
+      padding:10px 18px;
+      background:rgba(127,119,221,0.08);
+      border:1px solid rgba(127,119,221,0.18);
+      border-radius:16px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 0 18px rgba(127,119,221,0.08);
+      color:#d1d5db;
+      font-size:14px;
+      font-family:Arial,sans-serif;
+      font-weight:600;
+      ">
+      👁 Visitors:
+      <span id="visitor-count" style="color:#a78bfa;">Loading...</span>
+    </div>
 
-          <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1533740/t/2"></script>
-        </div>
+    <button class="nav-cta" onclick="showPage('tracks')">Start learning</button>
 
-      </div>
-
-      <button class="nav-cta" onclick="showPage('tracks')">Start learning</button>
-
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
     </div>
     <div style="display:flex;gap:10px;align-items:center;">
       <button class="nav-cta" onclick="showPage('tracks')">Start learning</button>
@@ -2773,7 +2752,15 @@ LOW PRIORITY (rotate in/out):
       });
     }
   </script>
+  </script>
 
+  <script>
+    fetch('https://api.countapi.xyz/hit/rvntestingacademy/visits')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('visitor-count').innerText = data.value;
+      });
+  </script>
 
 </body>
 
